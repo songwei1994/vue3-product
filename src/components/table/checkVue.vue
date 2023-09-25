@@ -5,6 +5,14 @@
         <el-table-column property="name" label="Name" width="120" />
         <el-table-column property="address" label="Address" />
     </el-table>
+    <!-- <el-pagination
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+            :page-sizes="[10, 15, 20]"
+            :page-size="pagesize"
+            layout="total, sizes, prev, pager, next, jumper"
+            :total="total">
+    </el-pagination> -->
 </template>
 
 <script setup lang="ts">

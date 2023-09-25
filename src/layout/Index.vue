@@ -20,7 +20,7 @@
       
       <!-- <p style="color: #999; padding: 0 20px 5px;">缓存组件：{{caches}}</p> -->
       <el-main id="app-main-scroller">
-        <div style="padding: 20px;">
+        <div style="padding: 20px;" class="content-box">
           <router-view v-slot="{ Component }">
             <keep-alive :include="caches">
               <component :is="Component" />
@@ -84,5 +84,9 @@ const menus = ref([
   justify-content: center;
   height: 100%;
   right: 20px;
+}
+.content-box{
+  width: 100%;
+  height: 100%;
 }
 </style>
