@@ -21,6 +21,7 @@ html, body {
   overflow-y: hidden;
   background-color: aliceblue;
   color: black;
+  overflow-x: hidden;
 }
 @media (max-width: 768px) {
   #app {
