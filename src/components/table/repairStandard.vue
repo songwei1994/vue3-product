@@ -4,21 +4,23 @@
             筛选区域
         </div>
         <div class="top">
-            <el-table class="table-content" ref="singleTableRef" :data="tableData" highlight-current-row
+            <el-table class="table-content" ref="singleTableRef" :data="tableData" highlight-current-row table-layout="auto"
                 style="width: 100%;">
                 <el-table-column type="index" width="50" fixed="left" />
-                <el-table-column property="standardCode" label="产线" width="120" />
-                <el-table-column property="deviceName" label="设备" width="120" />
-                <el-table-column property="compName" label="部件" />
-                <el-table-column property="faultName" label="故障名称" />
-                <el-table-column property="productionAffection" label="生产影响" />
-                <el-table-column property="happenTime" label="发生日期" />
-                <el-table-column property="startTime" label="开始时间" />
-                <el-table-column property="endTime" label="结束时间" />
-                <el-table-column property="reasonDescription" label="原因描述" />
-                <el-table-column property="reasonType" label="原因类型" />
-                <el-table-column property="treatmentMethod" label="处理方法" />
-                <!-- <el-table-column property="repairNumber" label="维修编号" /> -->
+                <el-table-column property="comName" label="设备名称" width="120" />
+                <el-table-column property="repairItemName" label="项目名称" width="120" />
+                <el-table-column property="totalCostTime" label="总工时(h)" />
+                <el-table-column property="workTime" label="项目时间(h)" />
+                <el-table-column property="fileName" label="参考文档" />
+                <el-table-column property="author" label="编制人" />
+                <el-table-column property="createTime" label="编制日期" />
+                <el-table-column label="操作">
+                    <template #default="scope">
+                        <el-button size="small">查看</el-button>
+                        <el-button size="small" type="danger">修改</el-button>
+                        <el-button size="small" type="danger">删除</el-button>
+                    </template>
+                </el-table-column>
             </el-table>
         </div>
         <div class="bottom">
@@ -32,7 +34,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { getFaultHistoryList } from '@/http/api.ts'
+import { getRepairStandardList } from '@/http/api.ts'
 
 //分页
 const totalCount = ref(4);
@@ -53,12 +55,12 @@ const tableData = ref()
 onMounted(() => {
     getData()
 })
-const getData = async()=>{
+const getData = async () => {
     const params = {
-        currentPage:currentPage.value,
-        pageSize:pageSize.value
+        currentPage: currentPage.value,
+        pageSize: pageSize.value
     }
-    let data = await getFaultHistoryList(params)     
+    let data = await getRepairStandardList(params)
     tableData.value = data.tableData
     totalCount.value = data.dataCount
 }
@@ -69,9 +71,11 @@ const getData = async()=>{
     width: 100%;
     height: 100%;
     position: absolute;
-    .head{
-       height: 60px; 
+
+    .head {
+        height: 60px;
     }
+
     .top {
         width: 100%;
         height: calc(100% - 120px);
@@ -86,4 +90,5 @@ const getData = async()=>{
         display: flex;
         justify-content: center;
     }
-}</style>
+}
+</style>

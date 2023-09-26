@@ -9,7 +9,7 @@
       </div>
       <div class="content">
         <el-switch v-model="isCollapse" active-text="展开" inactive-text="折叠" inline-prompt />
-        <el-menu default-active="2" :collapse="isCollapse" @open="handleOpen" @close="handleClose"
+        <el-menu default-active="checkVue" :collapse="isCollapse" @open="handleOpen" @close="handleClose"
           active-text-color="#ffd04b" @select="selectItem">
           <el-sub-menu index="1">
             <template #title>
@@ -29,8 +29,8 @@
               </el-icon>
               <span>静态履历</span>
             </template>
-            <el-menu-item index="2-1">点检标准</el-menu-item>
-            <el-menu-item index="2-2">维修标准</el-menu-item>
+            <el-menu-item index="checkStandard">点检标准</el-menu-item>
+            <el-menu-item index="repairStandard">维修标准</el-menu-item>
             <el-menu-item index="2-3">给油脂标准</el-menu-item>
             <el-menu-item index="2-4">技术标准</el-menu-item>
           </el-sub-menu>
@@ -55,6 +55,9 @@ import { getDeviceTree } from '@/http/api.ts'
 import checkVue from '@/components/table/checkVue.vue'
 import faultVue from '@/components/table/faultVue.vue'
 import repairVue from '@/components/table/repairVue.vue'
+import checkStandardVue from '@/components/table/checkStandard.vue'
+import repairStandardVue from '@/components/table/repairStandard.vue'
+
 interface Tree {
   label: string
   children?: Tree[]
@@ -90,13 +93,15 @@ const compData = reactive([
     name: 'repairVue',
     com: markRaw(repairVue)
   },
-  // {
-  //   name: 'checkStaticVue',
-  //   com: markRaw(checkStaticVue)
-  // },{
-  //   name: 'repairStaticVue',
-  //   com: markRaw(repairStaticVue)
-  // }, {
+  {
+    name: 'checkStandard',
+    com: markRaw(checkStandardVue)
+  }
+  ,{
+    name: 'repairStandard',
+    com: markRaw(repairStandardVue)
+  }
+  //, {
   //   name: 'oilStaticVue',
   //   com: markRaw(oilStaticVue)
   // }, {
@@ -113,6 +118,7 @@ const filterNode = (label: string, data: Tree) => {
 //点击结构树
 const handleNodeClick = (node: Tree) => {
   console.log(node);
+  // if(node.type == 'device') 判断当前点击组织类型，productline
 }
 const selectItem = (key: string) => {
   let map = compData.find(item => item.name == key)!.com
@@ -179,6 +185,6 @@ const defaultProps = {
 }
 
 .box-table {
-  height: 85%;
+  height: 100%;
 }
 </style>

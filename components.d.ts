@@ -7,6 +7,7 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    CheckStandard: typeof import('./src/components/table/checkStandard.vue')['default']
     CheckVue: typeof import('./src/components/table/checkVue.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
@@ -17,6 +18,7 @@ declare module 'vue' {
     ElMain: typeof import('element-plus/es')['ElMain']
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
+    ElPagination: typeof import('element-plus/es')['ElPagination']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
@@ -29,7 +31,10 @@ declare module 'vue' {
     Layout: typeof import('./src/components/layout/index.vue')['default']
     Login: typeof import('./src/components/login/index.vue')['default']
     NavMenu: typeof import('./src/components/layout/navMenu.vue')['default']
+    RepairStandard: typeof import('./src/components/table/repairStandard.vue')['default']
     RepairVue: typeof import('./src/components/table/repairVue.vue')['default']
+    RepairVue2: typeof import('./src/components/table/repairVue2.vue')['default']
+    RepairVueBack: typeof import('./src/components/table/repairVue-back.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

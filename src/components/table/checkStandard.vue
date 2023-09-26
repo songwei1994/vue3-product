@@ -4,18 +4,25 @@
             筛选区域
         </div>
         <div class="top">
-            <el-table class="table-content" ref="singleTableRef" :data="tableData" 
-            highlight-current-row  table-layout="auto" style="width: 100%;">
+            <el-table class="table-content" ref="singleTableRef" :data="tableData" highlight-current-row table-layout="auto"
+                style="width: 100%;">
                 <el-table-column type="index" width="50" fixed="left" />
                 <el-table-column property="standardCode" label="点检标准编号" width="120" />
-                <el-table-column property="checkItemName" label="点检项目" width="120" />
-                <el-table-column property="deviceName" label="设备名称" />
-                <el-table-column property="implementer" label="实施方" />
-                <el-table-column property="planDate" label="计划日期" />
-                <el-table-column property="completeDate" label="完工日期" />
-                <el-table-column property="positionCode" label="岗位代码" />
-                <el-table-column property="result" label="判定" />
-                <el-table-column property="repairNumber" label="维修编号" />
+                <el-table-column property="inspectionItemName" label="点检项目名称" width="120" />
+                <el-table-column property="inspectionStandardType" label="标准类别" />
+                <el-table-column property="secureListing" label="安全挂牌" />
+                <el-table-column property="implementationType" label="实施方" />
+                <el-table-column property="implementationCycle" label="实施周期" />
+                <el-table-column property="revisedCode" label="修订人岗号" />
+                <el-table-column property="revisedName" label="修订人姓名" />
+                <el-table-column property="revisedDate" label="修订日期" />
+                <el-table-column label="操作">
+                    <template #default="scope">
+                        <el-button size="small">查看</el-button>
+                        <el-button size="small" type="danger">修改</el-button>
+                        <el-button size="small" type="danger">删除</el-button>
+                    </template>
+                </el-table-column>
             </el-table>
         </div>
         <div class="bottom">
@@ -29,12 +36,12 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { getPointHistoryList } from '@/http/api.ts'
+import { getPointStandardList } from '@/http/api.ts'
 
 //分页
 const totalCount = ref(4);
 const currentPage = ref(1);
-const pageSize = ref(20);
+const pageSize = ref(10);
 
 
 const handleSizeChange = (val: number) => {
@@ -50,12 +57,12 @@ const tableData = ref()
 onMounted(() => {
     getData()
 })
-const getData = async()=>{
+const getData = async () => {
     const params = {
-        currentPage:currentPage.value,
-        pageSize:pageSize.value
+        currentPage: currentPage.value,
+        pageSiz: pageSize.value
     }
-    let data = await getPointHistoryList(params)     
+    let data = await getPointStandardList(params)
     tableData.value = data.tableData
     totalCount.value = data.dataCount
 }
@@ -66,9 +73,11 @@ const getData = async()=>{
     width: 100%;
     height: 100%;
     position: absolute;
-    .head{
-       height: 60px; 
+
+    .head {
+        height: 60px;
     }
+
     .top {
         width: 100%;
         height: calc(100% - 120px);
@@ -83,4 +92,5 @@ const getData = async()=>{
         display: flex;
         justify-content: center;
     }
-}</style>
+}
+</style>

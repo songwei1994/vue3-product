@@ -1,99 +1,89 @@
 <template>
-  <div class="c-container">
-    <div class="c-container-top"></div>
-    <div class="c-container-center">
-      <div @click="onToggle"><el-button>toggle按钮</el-button></div>
-      <div v-if="show"><el-button>按钮</el-button></div>
-    </div>
-    <div class="c-container-bottom">
-      <div class="c-pageTableContainer">
-        <div class="c-pageTableContainer-table">
-          <el-table :data="tableData" style="width: 100%" height="100%">
-            <el-table-column prop="date" label="日期" width="180">
-            </el-table-column>
-            <el-table-column prop="name" label="姓名" width="180">
-            </el-table-column>
-            <el-table-column prop="address" label="地址"> </el-table-column>
-          </el-table>
+    <div class="box">
+        <div class="head">
+            筛选区域
         </div>
-        <div class="c-pageTableContainer-page"></div>
-      </div>
+        <div class="top">
+            <el-table class="table-content" ref="singleTableRef" :data="tableData" highlight-current-row
+                style="width: 100%;">
+                <el-table-column type="index" width="50" fixed="left" />
+                <el-table-column property="delegateNumber" label="委托单编码" width="120" />
+                <el-table-column property="repairNumber" label="检修项目编号" width="120" />
+                <el-table-column property="repairType" label="类型" />
+                <el-table-column property="productionAffection" label="生产影响" />
+                <el-table-column property="repairName" label="检修项目名称" />
+                <el-table-column property="repairDate" label="开工日期" />
+                <!-- <el-table-column property="startTime" label="完工日期" /> -->
+                <el-table-column property="delegatePeople" label="委托人" />
+                <el-table-column property="standardCode" label="点检编号" />
+                <!-- <el-table-column property="reasonType" label="原因类型" />
+                <el-table-column property="treatmentMethod" label="处理方法" /> -->
+                <!-- <el-table-column property="repairNumber" label="维修编号" /> -->
+            </el-table>
+        </div>
+        <div class="bottom">
+            <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage"
+                :page-sizes="[10, 15, 20]" :page-size="pageSize" background layout="total, sizes, prev, pager, next, jumper"
+                :total="totalCount">
+            </el-pagination>
+        </div>
     </div>
-  </div>
 </template>
 
 <script setup lang="ts">
-import {ref} from 'vue'
-const tableData = [
-  {
-    date: '2016-05-03',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-02',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-04',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-01',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-]
-const show = ref(false)
-const onToggle = ()=>{
-  show.value = !show.value
+import { ref, onMounted } from 'vue'
+import { getRepairHistoryList } from '@/http/api.ts'
+
+//分页
+const totalCount = ref(4);
+const currentPage = ref(1);
+const pageSize = ref(10);
+
+
+const handleSizeChange = (val: number) => {
+    pageSize.value = val
+    currentPage.value = 1
+    getData()
 }
-
-
+const handleCurrentChange = (val: number) => {
+    currentPage.value = val
+    getData()
+}
+const tableData = ref()
+onMounted(() => {
+    getData()
+})
+const getData = async()=>{
+    const params = {
+        currentPage:currentPage.value,
+        pageSize:pageSize.value
+    }
+    let data = await getRepairHistoryList(params)     
+    tableData.value = data.tableData
+    totalCount.value = data.dataCount
+}
 </script>
 
 <style lang="scss" scoped>
-.c-container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  &-top {
-    height: 100px;
-    background-color: lightblue;
-  }
-  &-center {
-    background-color: lightcoral;
-    flex-shrink: 0;
-  }
-  &-bottom {
-    flex: 1;
-    background-color: lightgray;
-  }
-}
-.c-pageTableContainer {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  &-table {
-    flex: 1;
-    background-color: lightseagreen;
-    // 重点是这里：开始
-    position: relative;
+.box {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    .head{
+       height: 60px; 
+    }
+    .top {
+        width: 100%;
+        height: calc(100% - 120px);
 
-    ::v-deep(.el-table) {
-      position: absolute;
-      height: 100%;
+        .table-content {
+            height: 100%;
+        }
     }
 
-    // 重点是这里：结束
-  }
-
-  &-page {
-    height: 60px;
-    background-color: lightgray;
-    flex-shrink: 0;
-  }
+    .bottom {
+        height: 60px;
+        display: flex;
+        justify-content: center;
+    }
 }</style>
