@@ -1,7 +1,7 @@
 <template>
     <div class="box">
         <div class="head">
-            筛选区域
+            <!-- 筛选区域 -->
         </div>
         <div class="top">
             <el-table class="table-content" ref="singleTableRef" :data="tableData" 

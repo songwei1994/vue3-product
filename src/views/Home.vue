@@ -1,14 +1,14 @@
 <template>
   <div class="content flex">
     <div class="left">
-      <div class="tree">
-        <el-input v-model="filterText" placeholder="请输入关键字" />
-        <el-tree class="tree-box" ref="treeRef" :data="treeData" :props="defaultProps" :filter-node-method="filterNode"
-          @node-click="handleNodeClick">
+      <div class="tree m-1">
+        <el-input class="tree-input mb-1" v-model="filterText" placeholder="请输入关键字" />
+        <el-tree ref="treeRef" :data="treeData" :props="defaultProps" :filter-node-method="filterNode"
+          @node-click="handleNodeClick" show-checkbox>
         </el-tree>
       </div>
-      <div class="content">
-        <el-switch v-model="isCollapse" active-text="展开" inactive-text="折叠" inline-prompt />
+      <div class="content ml-2">
+        <el-switch class="btn" v-model="isCollapse" active-text="展开" inactive-text="折叠" inline-prompt />
         <el-menu default-active="checkVue" :collapse="isCollapse" @open="handleOpen" @close="handleClose"
           active-text-color="#ffd04b" @select="selectItem">
           <el-sub-menu index="1">
@@ -155,7 +155,7 @@ const defaultProps = {
 
     .tree {
       width: 200px;
-
+      margin-top: 2px;
       .tree-box {
         display: block;
         height: calc(100% - 45px);
@@ -165,6 +165,10 @@ const defaultProps = {
 
     .content {
       flex: 1;
+      .btn{
+        height: 60px;
+        margin-top: 4px;
+      }
     }
   }
 
@@ -180,8 +184,9 @@ const defaultProps = {
 // .collpaseMenu{
 //   width: 80px;
 // }
-:deep(.is-active) {
+:deep(.el-menu-item.is-active) {
   color: #0078d4 !important;
+  border-right: 2px solid #0078d4;
 }
 
 .box-table {

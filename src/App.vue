@@ -19,7 +19,7 @@ collectCaches()
 }
 html, body {
   overflow-y: hidden;
-  background-color: aliceblue;
+  background-color: #ececec;
   color: black;
   overflow-x: hidden;
 }
