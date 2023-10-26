@@ -12,13 +12,14 @@
                 <el-table-column property="compName" label="部件" />
                 <el-table-column property="faultName" label="故障名称" />
                 <el-table-column property="productionAffection" label="生产影响" />
-                <el-table-column property="happenTime" label="发生日期" />
+                <el-table-column property="happenDate" label="发生日期" />
                 <el-table-column property="startTime" label="开始时间" />
                 <el-table-column property="endTime" label="结束时间" />
+                <el-table-column property="costTime" label="结束时间" />
                 <el-table-column property="reasonDescription" label="原因描述" />
-                <el-table-column property="reasonType" label="原因类型" />
+                <el-table-column property="reasonType" label="类型" />
                 <el-table-column property="treatmentMethod" label="处理方法" />
-                <!-- <el-table-column property="repairNumber" label="维修编号" /> -->
+                <el-table-column property="faultContent" label="故障内容" />
             </el-table>
         </div>
         <div class="bottom">

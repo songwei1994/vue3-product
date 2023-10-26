@@ -9,13 +9,13 @@
                 <el-table-column type="index" width="50" fixed="left" />
                 <el-table-column property="delegateNumber" label="委托单编码" width="120" />
                 <el-table-column property="repairNumber" label="检修项目编号" width="120" />
-                <el-table-column property="repairType" label="类型" />
-                <el-table-column property="productionAffection" label="生产影响" />
                 <el-table-column property="repairName" label="检修项目名称" />
-                <el-table-column property="repairDate" label="开工日期" />
-                <!-- <el-table-column property="startTime" label="完工日期" /> -->
+                <el-table-column property="repairContent" label="检修内容" />
+                <el-table-column property="repairTime" label="开工日期" />
+                <el-table-column property="finishTime" label="完工日期" />
+                <el-table-column property="repairReason" label="项目类型" />
                 <el-table-column property="delegatePeople" label="委托人" />
-                <el-table-column property="standardCode" label="点检编号" />
+                <!-- <el-table-column property="standardCode" label="点检编号" /> -->
                 <!-- <el-table-column property="reasonType" label="原因类型" />
                 <el-table-column property="treatmentMethod" label="处理方法" /> -->
                 <!-- <el-table-column property="repairNumber" label="维修编号" /> -->

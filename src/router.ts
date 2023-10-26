@@ -5,18 +5,18 @@ let loginStore: any = null
 const routes: RouteRecordRaw[] = [
   {
     name: 'layout',
-    path: '/index',
+    path: '/',
     component: () => import('@/layout/Index.vue'),
     children: [
-      // {
-      //   path: '',
-      //   component: () => import('./views/Home.vue'),
-      //   name: 'home',
-      //   meta: {
-      //     // keepAlive: true,
-      //     title: '履历'
-      //   }
-      // },
+      {
+        path: '',
+        component: () => import('./views/Home.vue'),
+        name: 'home',
+        meta: {
+          // keepAlive: true,
+          title: '履历'
+        }
+      },
       // {
       //   path: '/article',
       //   component: () => import('./views/ArticleList.vue'),
@@ -88,15 +88,15 @@ const routes: RouteRecordRaw[] = [
     name: 'login',
     path: '/login',
     component: () => import('@/views/login.vue'),
-  }, {
-    path: '/',
-    component: () => import('./views/Home.vue'),
-    name: 'home',
-    meta: {
-      // keepAlive: true,
-      title: '履历'
-    }
-  }
+  }, 
+  // {
+  //   path: '/',
+  //   component: () => import('./views/Home.vue'),
+  //   name: 'home',
+  //   meta: {
+  //     title: '履历'
+  //   }
+  // }
 ]
 // routes.beforeEach((to,from,next) =>{
 //   if()
