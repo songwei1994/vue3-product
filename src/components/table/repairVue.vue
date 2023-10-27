@@ -6,13 +6,13 @@
         <div class="top">
             <el-table class="table-content" ref="singleTableRef" :data="tableData" highlight-current-row
                 style="width: 100%;">
-                <el-table-column type="index" width="50" fixed="left" />
-                <el-table-column property="delegateNumber" label="委托单编码" width="120" />
-                <el-table-column property="repairNumber" label="检修项目编号" width="120" />
-                <el-table-column property="repairName" label="检修项目名称" />
-                <el-table-column property="repairContent" label="检修内容" />
-                <el-table-column property="repairTime" label="开工日期" />
-                <el-table-column property="finishTime" label="完工日期" />
+                <el-table-column type="index" width="60" fixed="left" label="序号"/>
+                <el-table-column property="delegateNumber" label="委托单编码" width="160" />
+                <el-table-column property="repairNumber" label="检修项目编号" width="140" />
+                <el-table-column property="repairName" label="检修项目名称"  show-overflow-tooltip/>
+                <el-table-column property="repairContent" label="检修内容" show-overflow-tooltip/>
+                <el-table-column property="repairTime" label="开工日期" width="120"/>
+                <el-table-column property="finishTime" label="完工日期" width="120"/>
                 <el-table-column property="repairReason" label="项目类型" />
                 <el-table-column property="delegatePeople" label="委托人" />
                 <!-- <el-table-column property="standardCode" label="点检编号" /> -->
@@ -69,13 +69,15 @@ const getData = async()=>{
     width: 100%;
     height: 100%;
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items:stretch;
     .head{
        height: 60px; 
     }
     .top {
-        width: 100%;
-        height: calc(100% - 120px);
-
+        flex: 1;
+        overflow: auto;
         .table-content {
             height: 100%;
         }

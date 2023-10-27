@@ -71,6 +71,9 @@ const getData = async () => {
     width: 100%;
     height: 100%;
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items:stretch;
 
     .head {
         height: 60px;

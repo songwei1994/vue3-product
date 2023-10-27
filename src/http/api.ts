@@ -28,20 +28,20 @@ type ResTable<T> = Promise<ITableData<T>>;
 export const getDeviceTree = (): Res<null> =>
     instance.get(import.meta.env.VITE_APP_API_OTHERURL + URL.deviceTree);
 //获取点检记录
-export const getPointHistoryList = (params: any): ResTable<null> =>
-    instance.get(URL.pointHistory, { params });
+export const getPointHistoryList = (data: any): ResTable<null> =>
+    instance.post(URL.pointHistory, data);
 
 //获取故障记录
-export const getFaultHistoryList = (params: any): ResTable<null> =>
-    instance.get(URL.faultHistory, params);
+export const getFaultHistoryList = (data: any): ResTable<null> =>
+    instance.post(URL.faultHistory, data);
 //获取维修记录
-export const getRepairHistoryList = (params: any): ResTable<null> =>
-    instance.get(URL.repairHistory, params);
+export const getRepairHistoryList = (data: any): ResTable<null> =>
+    instance.post(URL.repairHistory, data);
 
 
 //获取点检标准
-export const getPointStandardList = (params: any): ResTable<null> =>
-    instance.get(URL.pointStandard, params);
+export const getPointStandardList = (data: any): ResTable<null> =>
+    instance.post(URL.pointStandard, data);
 //获取维修标准
 export const getRepairStandardList = (params: any): ResTable<null> =>
     instance.get(URL.repairStandard, params);

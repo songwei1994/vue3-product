@@ -4,22 +4,22 @@
             <!-- 筛选区域 -->
         </div>
         <div class="top">
-            <el-table class="table-content" ref="singleTableRef" :data="tableData" highlight-current-row
-                style="width: 100%;">
-                <el-table-column type="index" width="50" fixed="left" />
-                <el-table-column property="standardCode" label="产线" width="120" />
+            <el-table class="table-content" ref="singleTableRef" :data="tableData"  
+                style="width: 100%;" fit>
+                <el-table-column type="index" width="60"  fixed="left" label="序号"/>
+                <!-- <el-table-column property="standardCode" label="产线" width="120" /> -->
                 <el-table-column property="deviceName" label="设备" width="120" />
-                <el-table-column property="compName" label="部件" />
-                <el-table-column property="faultName" label="故障名称" />
-                <el-table-column property="productionAffection" label="生产影响" />
-                <el-table-column property="happenDate" label="发生日期" />
-                <el-table-column property="startTime" label="开始时间" />
-                <el-table-column property="endTime" label="结束时间" />
-                <el-table-column property="costTime" label="结束时间" />
-                <el-table-column property="reasonDescription" label="原因描述" />
-                <el-table-column property="reasonType" label="类型" />
-                <el-table-column property="treatmentMethod" label="处理方法" />
-                <el-table-column property="faultContent" label="故障内容" />
+                <el-table-column property="compName" label="部件" width="100"/>
+                <el-table-column property="faultName" label="故障名称" width="120" />
+                <el-table-column property="productionAffection" label="生产影响" width="120"/>
+                <el-table-column property="happenDate" label="发生日期" width="120"/>
+                <el-table-column property="startTime" label="开始时间" width="120"/>
+                <el-table-column property="endTime" label="结束时间" width="120"/>
+                <el-table-column property="costTime" label="结束时间" width="120"/>
+                <el-table-column property="reasonDescription" label="原因描述" width="150" show-overflow-tooltip/>
+                <el-table-column property="reasonType" label="类型" width="100"/>
+                <el-table-column property="treatmentMethod" label="处理方法"  show-overflow-tooltip/>
+                <el-table-column property="faultContent" label="故障内容" show-overflow-tooltip/>
             </el-table>
         </div>
         <div class="bottom">
@@ -70,13 +70,15 @@ const getData = async()=>{
     width: 100%;
     height: 100%;
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items:stretch;
     .head{
        height: 60px; 
     }
     .top {
-        width: 100%;
-        height: calc(100% - 120px);
-
+        flex: 1;
+        overflow: auto;
         .table-content {
             height: 100%;
         }

@@ -5,16 +5,16 @@
         </div>
         <div class="top">
             <el-table class="table-content" ref="singleTableRef" :data="tableData" 
-            highlight-current-row  table-layout="auto" style="width: 100%;">
-                <el-table-column type="index" width="50" fixed="left" />
+            highlight-current-row  table-layout="auto" style="width: 100%;" fit>
+                <el-table-column type="index" width="60" fixed="left" label="序号"/>
                 <el-table-column property="standardCode" label="点检标准编号" width="120" />
                 <el-table-column property="checkItemName" label="点检项目" width="120" />
-                <el-table-column property="deviceName" label="设备名称" />
-                <el-table-column property="implementer" label="实施方" />
-                <el-table-column property="planDate" label="计划日期" />
-                <el-table-column property="completeDate" label="完工日期" />
-                <el-table-column property="positionCode" label="岗位代码" />
-                <el-table-column property="result" label="判定" />
+                <el-table-column property="deviceName" label="设备名称" width="120"/>
+                <el-table-column property="implementer" label="实施方" width="120"/>
+                <el-table-column property="planDate" label="计划日期" width="120"/>
+                <el-table-column property="completeDate" label="完工日期" width="120"/>
+                <el-table-column property="positionCode" label="岗位代码" width="120"/>
+                <el-table-column property="result" label="判定" width="120"/>
                 <el-table-column property="repairNumber" label="维修编号" />
             </el-table>
         </div>
@@ -66,13 +66,14 @@ const getData = async()=>{
     width: 100%;
     height: 100%;
     position: absolute;
+    display: flex;
+    flex-direction: column;
     .head{
        height: 60px; 
     }
     .top {
-        width: 100%;
-        height: calc(100% - 120px);
-
+        flex: 1;
+        overflow: auto;
         .table-content {
             height: 100%;
         }

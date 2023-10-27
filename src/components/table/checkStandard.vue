@@ -73,15 +73,14 @@ const getData = async () => {
     width: 100%;
     height: 100%;
     position: absolute;
-
-    .head {
-        height: 60px;
+    display: flex;
+    flex-direction: column;
+    .head{
+       height: 60px; 
     }
-
     .top {
-        width: 100%;
-        height: calc(100% - 120px);
-
+        flex: 1;
+        overflow: auto;
         .table-content {
             height: 100%;
         }
