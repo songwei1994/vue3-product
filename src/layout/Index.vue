@@ -1,6 +1,6 @@
 <template>
   <el-container class="layout-container-demo" style="height: 100vh;">
-    <el-aside width="200px">
+    <!-- <el-aside width="200px">
       <el-scrollbar>
         <el-menu router>
           <el-menu-item 
@@ -11,7 +11,7 @@
           </el-menu-item>
         </el-menu>
       </el-scrollbar>
-    </el-aside>
+    </el-aside> -->
 
     <el-container>
       <el-header style="text-align: right; font-size: 12px">
