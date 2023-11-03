@@ -1,6 +1,6 @@
 <template>
   <el-container class="layout-container-demo" style="height: 100vh;">
-    <!-- <el-aside width="200px">
+    <el-aside width="200px">
       <el-scrollbar>
         <el-menu router>
           <el-menu-item 
@@ -11,12 +11,12 @@
           </el-menu-item>
         </el-menu>
       </el-scrollbar>
-    </el-aside> -->
+    </el-aside>
 
     <el-container>
-      <el-header style="text-align: right; font-size: 12px">
+      <!-- <el-header style="text-align: right; font-size: 12px">
         <layout-tabs></layout-tabs>
-      </el-header>
+      </el-header> -->
       
       <!-- <p style="color: #999; padding: 0 20px 5px;">缓存组件：{{caches}}</p> -->
       <el-main id="app-main-scroller">
@@ -36,7 +36,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import LayoutTabs from './LayoutTabs.vue'
+// import LayoutTabs from './LayoutTabs.vue'
 import useRouteCache from '@/hooks/useRouteCache.ts'
 // import useLayoutStore from '@/store/layout.ts'
 
